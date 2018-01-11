@@ -10,19 +10,57 @@ namespace Code_Review
     {
         static void Main(string[] args)
         {
-            //use Salutation class for Walmart Greeter.
+            var app = new Program();
+            app.Run();
 
-            Salutation oldGuy = new Salutation("Welcome to Walmart!", "Thanks for shopping at Walmart!");
+        }
 
-            //Get guy to talk
-            Console.WriteLine(oldGuy.Greet());
-            Console.WriteLine(oldGuy.SayFarewell());
+        //Our program is really the heart of our application
+        //so, let's treat it like an object.
+        //We'll use a property that holds a bunch of Salutation objects.
 
-            Salutation youngGuy = new Salutation("Sup fam", "Take 'er easy yo");
+        public List<Salutation> Speakers { get; private set; }
 
-            Console.WriteLine(youngGuy.Greet());
-            Console.WriteLine(youngGuy.SayFarewell());
 
+
+        public Program()
+        {
+            //The job of a constructor is to make sure that all the
+            //properties/ fields of the object are set to "meaningful values"
+            Speakers = new List<Salutation>(); //an "empty" list
+            Speakers.Add(new Salutation("Welcome to Walmart!", "Thanks for shopping at Walmart!"));
+            Speakers.Add(new Salutation("Sup fam", "Take 'er easy yo"));
+
+        }
+        public void Run()
+        {
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.WriteLine("You have entered a large building. Two beings stand before you.");
+            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.Write("Who do you want to speak to? Person A or B?");
+            string userInput = Console.ReadLine().ToUpper();
+            while(userInput != "A" && userInput != "B")
+            {
+                Console.Write("Try again:");
+                userInput = Console.ReadLine().ToUpper();
+            }
+
+            Console.ResetColor();
+            switch(userInput)
+            {
+                case "A":
+                    Speak(Speakers[0]);
+                    break;
+                case "B":
+                    Speak(Speakers[1]);
+                    break;
+            }
+        }
+
+        private void Speak(Salutation speaker)
+        {
+            Console.WriteLine(speaker.Greet());
+            Console.WriteLine(speaker.SayFarewell());
         }
     }
 }
