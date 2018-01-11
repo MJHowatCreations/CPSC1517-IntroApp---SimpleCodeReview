@@ -6,16 +6,30 @@ using System.Threading.Tasks;
 
 namespace Code_Review
 {
+    /// <summary>
+    /// The Salutation class represents something that can say hello or goodbye
+    /// </summary>
     public class Salutation
     {
+        #region Properties and Fields - What the Salutation objects will "look like"
+        //Fields
         private string _Greeting;
         private string _Farewell;
+        #endregion
 
+
+        #region Constructor and Methods - How the Salutation object will "behave"
+        /// <summary>
+        /// Instantiates a Salutation object with appropriate messages
+        /// </summary>
+        /// <param name="greetingMessage">The message to use when greeting</param>
+        /// <param name="farewellMessage">The message to use when saying farewell</param>
         public Salutation(string greetingMessage, string farewellMessage)
         {
             _Greeting = greetingMessage;
             _Farewell = farewellMessage;
         }
+
 
 
         public string Greet()
@@ -27,5 +41,6 @@ namespace Code_Review
         {
             return _Farewell;
         }
+        #endregion
     }
 }

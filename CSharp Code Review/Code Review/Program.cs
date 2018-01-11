@@ -18,9 +18,10 @@ namespace Code_Review
             Console.WriteLine(oldGuy.Greet());
             Console.WriteLine(oldGuy.SayFarewell());
 
-            Console.ReadLine();
+            Salutation youngGuy = new Salutation("Sup fam", "Take 'er easy yo");
 
-
+            Console.WriteLine(youngGuy.Greet());
+            Console.WriteLine(youngGuy.SayFarewell());
 
         }
     }
